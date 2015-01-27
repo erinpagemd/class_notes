@@ -30,13 +30,18 @@ var data = JSON.parse(request.response);
 function getJSON(url){
   var request = new XMLHttpRequest();
   request.open('GET, url);
-  //b/c return will execute immediately instead of waiting for the response...             
+  //b/c return will execute immediately instead of waiting for the response...
   request.onload = function (){
-    //we want data on the global scope
-    data = JSON.parse(request.response);
+    //use of status? happens at a different time than this function
+    if (this.status >=200 && this.status < 400) {
+      //we want data on the global scope
+      data = JSON.parse(request.response);
+    }
   }
   request.send();
   return JSON.parse(request.response);
 }
+
+getJSON('https://yspuku7qvh9u4cr3.firebaseio.com/.json'); data
 
 
