@@ -46,3 +46,4 @@ function getJSON(url, cb){
 getJSON('https://yspuku7qvh9u4cr3.firebaseio.com/.json', function(data){
   console.log(data.cohort7students);
 })
+
